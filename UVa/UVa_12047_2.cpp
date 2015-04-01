@@ -89,9 +89,9 @@ int main()
 		
 		for (i = 0; i < es; i++)
 		{
-			v1 = ae[i].from;
-			v2 = ae[i].to;
-			wt = ae[i].wt;
+			int &v1 = ae[i].from;
+			int &v2 = ae[i].to;
+			int &wt = ae[i].wt;
 			if (d_f[v1] == INF || d_r[v2] == INF) continue;
 			if (d_f[v1] + wt + d_r[v2] <= p)
 				ans = max(ans, wt);
