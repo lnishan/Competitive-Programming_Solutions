@@ -2,61 +2,64 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-#include <cmath>
 #include <algorithm>
 
 using namespace std;
 
+const char *S = "Stannis";
+const char *D = "Daenerys";
+
 int main()
 {
-	int i, j, n, k, ai, t;
-	int cnt[2] = {0, 0};
+	int i;
+	int c[2] = {0, 0};
+	int n, k, ai, ns, nd;
 	scanf("%d%d", &n, &k);
 	for (i = 0; i < n; i++)
 	{
 		scanf("%d", &ai);
-		cnt[ai & 1]++;
+		c[ai & 1]++;
 	}
-	t = cnt[1] & 1;
-	for (i = 0; i < n - k; i++)
+	if (n == k)
 	{
-		if (i & 1) // D turn
+		puts(c[1] & 1 ? S : D);
+	}
+	else if (c[0] == 0)
+	{
+		puts((c[1] - (n - k)) & 1 ? S : D);
+	}
+	else if (c[1] == 0)
+	{
+		puts(D);
+	}
+	else
+	{
+		nd = (n - k) >> 1;
+		ns = n - k - nd;
+		if ( (n - k) & 1 )
 		{
-			if (t)
+			if (nd < c[1])
 			{
-				if (cnt[1])
-					cnt[1]--;
+				if (nd >= c[0] && ((c[1] - (nd - c[0]) - ns) & 1) == 0)
+					puts(D);
 				else
-					cnt[0]--;
+					puts(S);
 			}
 			else
-			{
-				if (cnt[0])
-					cnt[0]--;
-				else
-					cnt[1]--;
-			}
+				puts(D);
 		}
 		else
 		{
-			if (t) // odd
-			{
-				if (cnt[0])
-					cnt[0]--;
-				else
-					cnt[1]--;
-			}
+			if (ns < c[0])
+				puts(D);
 			else
 			{
-				if (cnt[1])
-					cnt[1]--;
+				if (ns >= c[0] && ((c[1] - (ns - c[0]) - nd) & 1))
+					puts(S);
 				else
-					cnt[0]--;
+					puts(D);
 			}
 		}
-		t = cnt[1] & 1;
 	}
-	t = cnt[1] & 1;
-	puts(t ? "Stannis" : "Daenerys");
 	return 0;
 }
