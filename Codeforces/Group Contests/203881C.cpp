@@ -40,7 +40,7 @@ int main()
     for (i = 0; i < n; s1[i] = s2[i] = b[i], sum += b[i], i++)
     {
         scanf("%I64d", &b[i]);
-        if (b[i] > 3000000000ULL) break;
+//        if (b[i] > 3000000000ULL) break;
     }
     if (i < n || sum % 3)
     {
@@ -67,26 +67,26 @@ int main()
             filla(mx_i[0]), filla(mx_i[2]), filla2(mx_i[1]);
         else
             filla(mx_i[0]), filla(mx_i[1]), filla2(mx_i[2]);
-        for (i = 0; i < n; i++)
-            if (abs(a[j]) >= 1e9)
-                break;
+//        for (i = 0; i < n; i++)
+//            if (abs(a[j]) >= 1e9)
+//                break;
         if (i < n)
             puts("-1");
         else
             for (i = 0; i < n; i++)
-                printf("%d ", a[i]);
+                printf("%I64d ", a[i]);
     }
     else if (n % 3 == 1)
     {
         for (i = 0; i < n; i++)
-            printf("%d ", sum
+            printf("%I64d ", sum
                  - (i - 2 >= 0 ? s1[i - 2] : 0)
                   - (i + 2 < n ? s2[i + 2] : 0));
     }
     else // if (n % 3 == 2)
     {
         for (i = 0; i < n; i++)
-            printf("%d ", (i - 1 >= 0 ? s1[i - 1] : 0)
+            printf("%I64d ", (i - 1 >= 0 ? s1[i - 1] : 0)
                  + (i + 1 < n ? s2[i + 1] : 0)
                   - sum);
     }
