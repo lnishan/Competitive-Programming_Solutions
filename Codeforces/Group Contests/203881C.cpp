@@ -1,3 +1,10 @@
+/* 
+if (b0 + b3 + ... + b3n == sum
+ && b1 + b4 + ... + b3n+1 == sum
+ && b2 + b5 + ... + b3n+2 == sum)
+There exists a solution for any (a0, a1) = (x, y) where x, y can be any value
+*/
+
 #include <iostream>
 #include <cstdio>
 #include <cstring>
